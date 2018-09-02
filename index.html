@@ -14,6 +14,67 @@
     code{white-space: pre;}
 
     
+          a.sourceLine { display: inline-block; line-height: 1.25; }
+      a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+      a.sourceLine:empty { height: 1.2em; }
+      .sourceCode { overflow: visible; }
+      code.sourceCode { white-space: pre; position: relative; }
+      div.sourceCode { margin: 1em 0; }
+      pre.sourceCode { margin: 0; }
+      @media screen {
+      div.sourceCode { overflow: auto; }
+      }
+      @media print {
+      code.sourceCode { white-space: pre-wrap; }
+      a.sourceLine { text-indent: -1em; padding-left: 1em; }
+      }
+      pre.numberSource a.sourceLine
+        { position: relative; left: -4em; }
+      pre.numberSource a.sourceLine::before
+        { content: attr(data-line-number);
+          position: relative; left: -1em; text-align: right; vertical-align: baseline;
+          border: none; pointer-events: all; display: inline-block;
+          -webkit-touch-callout: none; -webkit-user-select: none;
+          -khtml-user-select: none; -moz-user-select: none;
+          -ms-user-select: none; user-select: none;
+          padding: 0 4px; width: 4em;
+          color: #aaaaaa;
+        }
+      pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+      div.sourceCode
+        {  }
+      @media screen {
+      a.sourceLine::before { text-decoration: underline; }
+      }
+      code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+      code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+      code span.at { color: #7d9029; } /* Attribute */
+      code span.bn { color: #40a070; } /* BaseN */
+      code span.bu { } /* BuiltIn */
+      code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+      code span.ch { color: #4070a0; } /* Char */
+      code span.cn { color: #880000; } /* Constant */
+      code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+      code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+      code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+      code span.dt { color: #902000; } /* DataType */
+      code span.dv { color: #40a070; } /* DecVal */
+      code span.er { color: #ff0000; font-weight: bold; } /* Error */
+      code span.ex { } /* Extension */
+      code span.fl { color: #40a070; } /* Float */
+      code span.fu { color: #06287e; } /* Function */
+      code span.im { } /* Import */
+      code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+      code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+      code span.op { color: #666666; } /* Operator */
+      code span.ot { color: #007020; } /* Other */
+      code span.pp { color: #bc7a00; } /* Preprocessor */
+      code span.sc { color: #4070a0; } /* SpecialChar */
+      code span.ss { color: #bb6688; } /* SpecialString */
+      code span.st { color: #4070a0; } /* String */
+      code span.va { color: #19177c; } /* Variable */
+      code span.vs { color: #4070a0; } /* VerbatimString */
+      code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
     
     .reveal a[href^="#"]:visited {
       color: #8ea9d2;
@@ -27,7 +88,7 @@
         line-height: 1.5 !important;
     }
   </style>
-  <link rel="stylesheet" href="template/css/theme/solarized.css" id="theme">
+  <link rel="stylesheet" href="template/css/theme/pascal.css" id="theme">
   <!-- Printing and PDF exports -->
   <script>
     var link = document.createElement( 'link' );
@@ -53,7 +114,7 @@
 <section id="hi-im-pascal-hertleif" class="slide level2">
 <h2>Hi, I’m Pascal Hertleif</h2>
 <ul>
-<li>Web frontend dev &amp; Rust</li>
+<li>Web dev &amp; Rust</li>
 <li>Co-organizer of <a href="http://rust.cologne/">Rust Cologne</a></li>
 <li>{<a href="https://twitter.com/killercup">twitter</a>,<a href="https://github.com/killercup">github</a>}.com/killercup</li>
 <li>Rust-centric blog: <a href="https://deterministic.space/">deterministic.space</a></li>
@@ -65,6 +126,94 @@
 </ul>
 </aside>
 </section>
+<section class="slide level2">
+
+<p><strong>Warning:</strong> Lots of code</p>
+<div class="fragment">
+<p>Interrupt me when you have a question</p>
+</div>
+<div class="fragment">
+<p>(Please use the mic)</p>
+</div>
+</section>
+<section><section id="data-and-behavior" class="title-slide slide level1"><h1>Data and Behavior</h1></section><section id="lets-do-stuff" class="slide level2">
+<h2>Let’s do stuff</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode rust"><code class="sourceCode rust"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">fn</span> make_true(input: &amp;<span class="dt">str</span>) -&gt; <span class="dt">String</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="pp">format!</span>(<span class="st">&quot;{}!!&quot;</span>, input)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="op">}</span></a></code></pre></div>
+<aside class="notes">
+<ul>
+<li>Takes a reference string slice (<code>&amp;str</code>)</li>
+<li>returns a new (true) <code>String</code></li>
+</ul>
+</aside>
+</section><section id="wrap-data" class="slide level2">
+<h2>Wrap data</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode rust"><code class="sourceCode rust"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">struct</span> Fact <span class="op">{</span> text: <span class="dt">String</span> <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">fn</span> make_true(input: &amp;Fact) -&gt; Fact <span class="op">{</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">  Fact <span class="op">{</span> text: <span class="pp">format!</span>(<span class="st">&quot;{}!!&quot;</span>, input.text) <span class="op">}</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="op">}</span></a></code></pre></div>
+</section></section>
+<section><section id="add-behavior-to-data" class="title-slide slide level1"><h1>Add Behavior to Data</h1></section><section id="how-to-write-a-method" class="slide level2">
+<h2>How to write a method</h2>
+<ol type="1">
+<li class="fragment">Write: <code>impl YourType {</code></li>
+<li class="fragment">Write: some function</li>
+<li class="fragment">Write: <code>}</code></li>
+</ol>
+</section><section id="make_true-as-a-method" class="slide level2">
+<h2><code>make_true</code> as a method</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode rust"><code class="sourceCode rust"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">struct</span> Fact <span class="op">{</span> text: <span class="dt">String</span> <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">impl</span> Fact <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">  <span class="kw">fn</span> make_true(&amp;<span class="kw">self</span>) -&gt; Fact <span class="op">{</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">    Fact <span class="op">{</span> text: <span class="pp">format!</span>(<span class="st">&quot;{}!!&quot;</span>, input.text) <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="op">}</span></a></code></pre></div>
+</section><section id="self" class="slide level2">
+<h2>self?</h2>
+<p>Methods can operate on the data</p>
+<p>Access the data using a form of <code>self</code> as first parameter</p>
+<aside class="notes">
+<ul>
+<li>A form of <code>self</code> as first parameter makes a function an instance method</li>
+</ul>
+</aside>
+</section><section id="a-form-of-self" class="slide level2">
+<h2>“A form of <code>self</code>”?</h2>
+<p>You need to specify how you want <code>self</code>:</p>
+<ul>
+<li><code>&amp;self</code>: Borrowed, read-only version</li>
+<li><code>&amp;mut self</code>: Mutable, borrowed version</li>
+<li><code>self</code>: Owned version, do whatever you want with it (incl. destroying it)</li>
+</ul>
+<aside class="notes">
+<p>Basically the same <code>borrowck</code> rules as always</p>
+</aside>
+</section><section id="another-make_true" class="slide level2">
+<h2>Another <code>make_true</code></h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode rust"><code class="sourceCode rust"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">struct</span> Fact <span class="op">{</span> text: <span class="dt">String</span> <span class="op">}</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">impl</span> Fact <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="kw">fn</span> make_true(&amp;<span class="kw">mut</span> <span class="kw">self</span>) <span class="op">{</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">    input.text.push_str(<span class="st">&quot;!!&quot;</span>);</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="op">}</span></a></code></pre></div>
+</section><section id="or" class="slide level2">
+<h2>Or:</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode rust"><code class="sourceCode rust"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">struct</span> Fact <span class="op">{</span> text: <span class="dt">String</span> <span class="op">}</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">impl</span> Fact <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">  <span class="kw">fn</span> make_true(<span class="kw">self</span>) -&gt; <span class="kw">Self</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">    input.text.push_str(<span class="st">&quot;!!&quot;</span>);</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">    <span class="kw">self</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="op">}</span></a></code></pre></div>
+<aside class="notes">
+<p>You can no longer use the original fact</p>
+</aside>
+</section></section>
     </div>
   </div>
 
