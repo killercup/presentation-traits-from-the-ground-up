@@ -10,71 +10,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="template/css/reveal.css">
-  <style type="text/css">
+    <link rel="stylesheet" href="template/lib/css/solarized-light.css">
+    <style type="text/css">
     code{white-space: pre;}
 
-    
-          a.sourceLine { display: inline-block; line-height: 1.25; }
-      a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-      a.sourceLine:empty { height: 1.2em; }
-      .sourceCode { overflow: visible; }
-      code.sourceCode { white-space: pre; position: relative; }
-      div.sourceCode { margin: 1em 0; }
-      pre.sourceCode { margin: 0; }
-      @media screen {
-      div.sourceCode { overflow: auto; }
-      }
-      @media print {
-      code.sourceCode { white-space: pre-wrap; }
-      a.sourceLine { text-indent: -1em; padding-left: 1em; }
-      }
-      pre.numberSource a.sourceLine
-        { position: relative; left: -4em; }
-      pre.numberSource a.sourceLine::before
-        { content: attr(data-line-number);
-          position: relative; left: -1em; text-align: right; vertical-align: baseline;
-          border: none; pointer-events: all; display: inline-block;
-          -webkit-touch-callout: none; -webkit-user-select: none;
-          -khtml-user-select: none; -moz-user-select: none;
-          -ms-user-select: none; user-select: none;
-          padding: 0 4px; width: 4em;
-          color: #aaaaaa;
-        }
-      pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-      div.sourceCode
-        {  }
-      @media screen {
-      a.sourceLine::before { text-decoration: underline; }
-      }
-      code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-      code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-      code span.at { color: #7d9029; } /* Attribute */
-      code span.bn { color: #40a070; } /* BaseN */
-      code span.bu { } /* BuiltIn */
-      code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-      code span.ch { color: #4070a0; } /* Char */
-      code span.cn { color: #880000; } /* Constant */
-      code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-      code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-      code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-      code span.dt { color: #902000; } /* DataType */
-      code span.dv { color: #40a070; } /* DecVal */
-      code span.er { color: #ff0000; font-weight: bold; } /* Error */
-      code span.ex { } /* Extension */
-      code span.fl { color: #40a070; } /* Float */
-      code span.fu { color: #06287e; } /* Function */
-      code span.im { } /* Import */
-      code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-      code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-      code span.op { color: #666666; } /* Operator */
-      code span.ot { color: #007020; } /* Other */
-      code span.pp { color: #bc7a00; } /* Preprocessor */
-      code span.sc { color: #4070a0; } /* SpecialChar */
-      code span.ss { color: #bb6688; } /* SpecialString */
-      code span.st { color: #4070a0; } /* String */
-      code span.va { color: #19177c; } /* Variable */
-      code span.vs { color: #4070a0; } /* VerbatimString */
-      code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
     
     .reveal a[href^="#"]:visited {
       color: #8ea9d2;
@@ -138,9 +77,9 @@
 </section>
 <section><section id="data-and-behavior" class="title-slide slide level1"><h1>Data and Behavior</h1></section><section id="lets-do-stuff" class="slide level2">
 <h2>Let’s do stuff</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode rust"><code class="sourceCode rust"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">fn</span> make_true(input: &amp;<span class="dt">str</span>) -&gt; <span class="dt">String</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="pp">format!</span>(<span class="st">&quot;{}!!&quot;</span>, input)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="op">}</span></a></code></pre></div>
+<pre class="rust"><code>fn make_true(input: &amp;str) -&gt; String {
+  format!(&quot;{}!!&quot;, input)
+}</code></pre>
 <aside class="notes">
 <ul>
 <li>Takes a reference string slice (<code>&amp;str</code>)</li>
@@ -149,11 +88,11 @@
 </aside>
 </section><section id="wrap-data" class="slide level2">
 <h2>Wrap data</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode rust"><code class="sourceCode rust"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">struct</span> Fact <span class="op">{</span> text: <span class="dt">String</span> <span class="op">}</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">fn</span> make_true(input: &amp;Fact) -&gt; Fact <span class="op">{</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">  Fact <span class="op">{</span> text: <span class="pp">format!</span>(<span class="st">&quot;{}!!&quot;</span>, input.text) <span class="op">}</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="op">}</span></a></code></pre></div>
+<pre class="rust"><code>struct Fact { text: String }
+
+fn make_true(input: &amp;Fact) -&gt; Fact {
+  Fact { text: format!(&quot;{}!!&quot;, input.text) }
+}</code></pre>
 </section></section>
 <section><section id="add-behavior-to-data" class="title-slide slide level1"><h1>Add Behavior to Data</h1></section><section id="how-to-write-a-method" class="slide level2">
 <h2>How to write a method</h2>
@@ -164,13 +103,17 @@
 </ol>
 </section><section id="make_true-as-a-method" class="slide level2">
 <h2><code>make_true</code> as a method</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode rust"><code class="sourceCode rust"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">struct</span> Fact <span class="op">{</span> text: <span class="dt">String</span> <span class="op">}</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">impl</span> Fact <span class="op">{</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">  <span class="kw">fn</span> make_true(&amp;<span class="kw">self</span>) -&gt; Fact <span class="op">{</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">    Fact <span class="op">{</span> text: <span class="pp">format!</span>(<span class="st">&quot;{}!!&quot;</span>, input.text) <span class="op">}</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="op">}</span></a></code></pre></div>
+<pre class="rust"><code>struct Fact { text: String }
+
+impl Fact {
+  fn make_true(&amp;self) -&gt; Fact {
+    Fact { text: format!(&quot;{}!!&quot;, self.text) }
+  }
+}</code></pre>
+</section><section id="using-the-method" class="slide level2">
+<h2>Using the method</h2>
+<pre class="rust"><code>let fact = Fact { text: String::from(&quot;Lorem ipsum&quot;) };
+let true_fact = fact.make_true();</code></pre>
 </section><section id="self" class="slide level2">
 <h2>self?</h2>
 <p>Methods can operate on the data</p>
@@ -186,50 +129,179 @@
 <ul>
 <li><code>&amp;self</code>: Borrowed, read-only version</li>
 <li><code>&amp;mut self</code>: Mutable, borrowed version</li>
-<li><code>self</code>: Owned version, do whatever you want with it (incl. destroying it)</li>
+<li>[<code>mut</code>] <code>self</code>: Owned version, do whatever you want with it (incl. destroying it)</li>
 </ul>
 <aside class="notes">
 <p>Basically the same <code>borrowck</code> rules as always</p>
 </aside>
 </section><section id="another-make_true" class="slide level2">
 <h2>Another <code>make_true</code></h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode rust"><code class="sourceCode rust"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">struct</span> Fact <span class="op">{</span> text: <span class="dt">String</span> <span class="op">}</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">impl</span> Fact <span class="op">{</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="kw">fn</span> make_true(&amp;<span class="kw">mut</span> <span class="kw">self</span>) <span class="op">{</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">    input.text.push_str(<span class="st">&quot;!!&quot;</span>);</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="op">}</span></a></code></pre></div>
+<pre class="rust"><code>struct Fact { text: String }
+
+impl Fact {
+  fn make_true(&amp;mut self) {
+    self.text.push_str(&quot;!!&quot;);
+  }
+}</code></pre>
 </section><section id="or" class="slide level2">
 <h2>Or:</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode rust"><code class="sourceCode rust"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">struct</span> Fact <span class="op">{</span> text: <span class="dt">String</span> <span class="op">}</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="kw">impl</span> Fact <span class="op">{</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">  <span class="kw">fn</span> make_true(<span class="kw">self</span>) -&gt; <span class="kw">Self</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">    input.text.push_str(<span class="st">&quot;!!&quot;</span>);</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">    <span class="kw">self</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="op">}</span></a></code></pre></div>
+<pre class="rust"><code>struct Fact { text: String }
+
+impl Fact {
+  fn make_true(mut self) -&gt; Fact {
+    self.text.push_str(&quot;!!&quot;);
+    self
+  }
+}</code></pre>
 <aside class="notes">
 <p>You can no longer use the original fact</p>
 </aside>
 </section></section>
 <section><section id="is-this-a-trait" class="title-slide slide level1"><h1>Is this a trait?</h1></section><section id="lets-give-it-a-name" class="slide level2">
 <h2>Let’s give it a name</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode rust"><code class="sourceCode rust"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">trait</span> Truth <span class="op">{</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">  <span class="kw">fn</span> make_true(<span class="kw">self</span>) -&gt; <span class="kw">Self</span>;</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="op">}</span></a></code></pre></div>
+<pre class="rust"><code>trait Truth {
+  fn make_true(&amp;self) -&gt; Self
+}</code></pre>
+<aside class="notes">
+<p>Let’s use the <code>&amp;self</code> version because we just need to look at a fact to create a new alternative fact</p>
+</aside>
 </section><section id="now-we-can-implement-it" class="slide level2">
 <h2>Now we can implement it</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode rust"><code class="sourceCode rust"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">impl</span> Truth <span class="kw">for</span> Fact <span class="op">{</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">  <span class="kw">fn</span> make_true(<span class="kw">self</span>) -&gt; <span class="kw">Self</span> <span class="op">{</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">    input.text.push_str(<span class="st">&quot;!!&quot;</span>);</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">    <span class="kw">self</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">  <span class="op">}</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="op">}</span></a></code></pre></div>
+<pre class="rust"><code>impl Truth for Fact {
+  fn make_true(&amp;self) -&gt; Self {
+    Fact { text: format!(&quot;{}!!&quot;, self.text) }
+  }
+}</code></pre>
 <aside class="notes">
 <p>This is the magic sauce right here</p>
 </aside>
+</section><section id="implement-it-for-everything" class="slide level2">
+<h2>Implement it for everything!</h2>
+<pre class="rust"><code>impl Truth for i32 {
+  fn make_true(&amp;self) -&gt; Self {
+    42
+  }
+}</code></pre>
+</section></section>
+<section><section id="abstract-over-behavior" class="title-slide slide level1"><h1>Abstract over behavior</h1></section><section id="t-truth" class="slide level2">
+<h2><code>T: Truth</code></h2>
+<pre class="rust"><code>fn print_news&lt;T: Truth&gt;(facts: &amp;[T]) {
+  for fact in facts {
+    let fact = fact.make_true();
+    println!(&quot;{}&quot;, fact);
+  }
+}</code></pre>
+</section><section class="slide level2">
+
+<p>Wait a second:</p>
+<pre class="plain"><code>error[E0277]: `T` doesn&#39;t implement `std::fmt::Display`
+  --&gt; src/lib.rs:16:20
+   |
+16 |     println!(&quot;{}&quot;, fact.make_true());
+   |                    ^^^^^^^^^^^^^^^^ `T` cannot be formatted with the default formatter
+   |
+   = help: the trait `std::fmt::Display` is not implemented for `T`
+   = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
+   = help: consider adding a `where T: std::fmt::Display` bound
+   = note: required by `std::fmt::Display::fmt`</code></pre>
+</section><section id="what-do-we-know-about-t" class="slide level2">
+<h2>What do we know about <code>T</code>?</h2>
+<ul>
+<li class="fragment">It implements <code>Truth</code></li>
+<li class="fragment">???</li>
+<li class="fragment">Nope, that’s it*</li>
+</ul>
+<aside class="notes">
+<p>Auto traits are a thing: Sized, Sync, Send</p>
+</aside>
+</section><section class="slide level2">
+
+<pre class="rust"><code>use std::fmt;
+
+fn print_news&lt;T: Truth + fmt::Display&gt;(facts: &amp;[T]) {
+  for fact in facts {
+    let fact = fact.make_true();
+    println!(&quot;{}&quot;, fact);
+  }
+}</code></pre>
+</section><section class="slide level2">
+
+<p>But we’ll also need:</p>
+<pre class="rust"><code>impl fmt::Display for Fact {
+    fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
+        write!(f, &quot;{}&quot;, self.text)
+    }
+}</code></pre>
+</section><section class="slide level2">
+
+<p>Here we go:</p>
+<pre class="rust"><code>fn main() {
+    let facts = vec![
+      Fact { text: String::from(&quot;lorem ipsum&quot;) },
+    ];
+
+    print_news(&amp;facts);
+}</code></pre>
+<pre class="plain"><code>$ cargo run
+lorem ipsum!!</code></pre>
+</section><section id="where-syntax" class="slide level2">
+<h2><code>where</code> syntax</h2>
+<p>Instead of</p>
+<pre class="rust"><code>fn print_news&lt;T: Truth + fmt::Display&gt;(facts: &amp;[T]) {}</code></pre>
+<p>we can also write</p>
+<pre class="rust"><code>fn print_news&lt;T&gt;(facts: &amp;[T]) where T: Truth + fmt::Display {}</code></pre>
+</section><section id="using-generics-in-impls" class="slide level2">
+<h2>Using Generics in <code>impl</code>s</h2>
+<pre class="rust"><code>impl&lt;T: Debug&gt; Foo for Vec&lt;T&gt; {
+  // ...
+}</code></pre>
+</section></section>
+<section><section id="associated-items" class="title-slide slide level1"><h1>Associated items</h1></section><section id="associated-functions" class="slide level2">
+<h2>Associated functions</h2>
+<p>That’s what we’ve been writing all this time</p>
+</section><section id="associated-types" class="slide level2">
+<h2>Associated types</h2>
+<p>specify types you need to refer to that are specific to each <code>impl</code> block</p>
+<pre class="rust"><code>trait Iterator {
+  type Item;
+  fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt;;
+}</code></pre>
+<pre class="rust"><code>impl Iterator for FourIntegers {
+  type Item = i32;
+  fn next(&amp;mut self) -&gt; Option&lt;i32&gt; {}
+}</code></pre>
+</section><section id="associated-constants" class="slide level2">
+<h2>Associated constants</h2>
+<pre class="rust"><code>trait SuperLog {
+  const LABEL: Display;
+
+  fn log(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result;
+}</code></pre>
+</section></section>
+<section><section id="good-to-know" class="title-slide slide level1"><h1>Good to know</h1></section><section id="unambiguous-function-call-syntax" class="slide level2">
+<h2>Unambiguous function call syntax</h2>
+<p><code>fact.make_true()</code></p>
+<p>expands to</p>
+<p><code>&lt;Fact as Truth&gt;::make_true(fact)</code></p>
+</section><section id="operators-are-traits" class="slide level2">
+<h2>Operators are traits</h2>
+<p><code>a + b</code> expands to <code>std::ops::Add::add(a, b)</code></p>
+<p>because of:</p>
+<pre class="rust"><code>impl Add&lt;i32&gt; for i32 {
+  type Output = i32;
+  // ...
+}</code></pre>
+</section><section id="marker-traits" class="slide level2">
+<h2>Marker traits</h2>
+<pre class="rust"><code>trait Fancy {}
+
+impl Fancy for Vec&lt;String&gt; {}</code></pre>
+</section></section>
+<section><section id="thanks" class="title-slide slide level1"><h1>Thanks!</h1></section><section id="any-questions" class="slide level2">
+<h2>Any questions?</h2>
+<p>I am Pascal</p>
+<p>{<a href="https://twitter.com/killercup">twitter</a>,<a href="https://github.com/killercup">github</a>}.com/killercup</p>
+<p>Slides: <a href="https://git.io/traits-from-the-ground-up">git.io/traits-from-the-ground-up</a></p>
 </section></section>
     </div>
   </div>
@@ -253,8 +325,9 @@
         dependencies: [
           { src: 'template/lib/js/classList.js', condition: function() { return !document.body.classList; } },
           { src: 'template/plugin/zoom-js/zoom.js', async: true },
-              { src: 'template/plugin/notes/notes.js', async: true }
-        ]
+              { src: 'template/plugin/notes/notes.js', async: true },
+              { src: 'template/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            ]
       });
     </script>
     </body>
