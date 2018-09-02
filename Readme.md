@@ -144,3 +144,36 @@ impl Fact {
 You can no longer use the original fact
 
 :::
+
+# Is this a trait?
+
+::: notes
+
+Yes it is, it just doesn't have a name
+
+:::
+
+## Let's give it a name
+
+```rust
+trait Truth {
+  fn make_true(self) -> Self;
+}
+```
+
+## Now we can implement it
+
+```rust
+impl Truth for Fact {
+  fn make_true(self) -> Self {
+    input.text.push_str("!!");
+    self
+  }
+}
+```
+
+::: notes
+
+This is the magic sauce right here
+
+:::

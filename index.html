@@ -214,6 +214,23 @@
 <p>You can no longer use the original fact</p>
 </aside>
 </section></section>
+<section><section id="is-this-a-trait" class="title-slide slide level1"><h1>Is this a trait?</h1></section><section id="lets-give-it-a-name" class="slide level2">
+<h2>Let’s give it a name</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode rust"><code class="sourceCode rust"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">trait</span> Truth <span class="op">{</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">  <span class="kw">fn</span> make_true(<span class="kw">self</span>) -&gt; <span class="kw">Self</span>;</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="op">}</span></a></code></pre></div>
+</section><section id="now-we-can-implement-it" class="slide level2">
+<h2>Now we can implement it</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode rust"><code class="sourceCode rust"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">impl</span> Truth <span class="kw">for</span> Fact <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">  <span class="kw">fn</span> make_true(<span class="kw">self</span>) -&gt; <span class="kw">Self</span> <span class="op">{</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">    input.text.push_str(<span class="st">&quot;!!&quot;</span>);</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">    <span class="kw">self</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">  <span class="op">}</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="op">}</span></a></code></pre></div>
+<aside class="notes">
+<p>This is the magic sauce right here</p>
+</aside>
+</section></section>
     </div>
   </div>
 
