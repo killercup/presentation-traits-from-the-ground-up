@@ -17,15 +17,14 @@ $endif$
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="$revealjs-url$/css/reveal.css">
+  $if(highlighting-css)$
+  <link rel="stylesheet" href="$revealjs-url$/$highlighting-css$">
+  $endif$
   <style type="text/css">
     code{white-space: pre;}
 
     $if(quotes)$
       q { quotes: "“" "”" "‘" "’"; }
-    $endif$
-
-    $if(highlighting-css)$
-      $highlighting-css$
     $endif$
 
     .reveal a[href^="#"]:visited {
@@ -246,7 +245,10 @@ $endif$
           { src: '$revealjs-url$/socket.io/socker.io.js', async: true },
           { src: '$revealjs-url$/plugin/notes-server/client.js', async: true },
     $endif$
-          { src: '$revealjs-url$/plugin/notes/notes.js', async: true }
+          { src: '$revealjs-url$/plugin/notes/notes.js', async: true },
+    $if(highlighting-css)$
+          { src: '$revealjs-url$/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+    $endif$
         ]
       });
     </script>

@@ -9,4 +9,5 @@ slides:
 	-V progress=true \
 	-V slideNumber=true \
 	-V history=true \
+	--no-highlight -V highlighting-css=lib/css/solarized-light.css \
 	--standalone --slide-level 2
