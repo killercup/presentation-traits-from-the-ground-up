@@ -5,7 +5,7 @@ date: 2018-09-05
 categories:
 - rust
 - presentation
-theme: solarized
+theme: pascal
 progress: true
 slideNumber: true
 history: true
